@@ -1,0 +1,4 @@
+projectName: choo-audio
+template:
+  name: choo-cli
+  source: choo-cli
