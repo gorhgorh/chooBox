@@ -5,7 +5,11 @@ const songInfo = require('../elements/song-info')
 const track = require('../elements/track')
 function tracker (state, prev, send) {
   return html`
-    <article class="cf" >
+    <article class="cf" onload=${() => {
+      window.daBeat = setInterval(() => {
+        send('nextTick')
+      },1000)
+    }}>
       <div class="fl w-100 w-70-ns tc tracker">
         <h1>Tracker</h1>
         <h3>${state.title}</h3>

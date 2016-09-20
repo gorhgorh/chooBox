@@ -17,10 +17,10 @@ function trackInfo (state) {
       const checked = (step === true ) ? 'bg-dark-green' : 'bg-light-green'
       // const isCurrent = ()
       return html`
-        <div class="flex-item ${checked}">
+        <div class="flex-item">
           <div class="stepBt ${checked} ${curClass}">
+            ${i}
           </div>
-          yo ${i}
         </div>`
       }
     )}

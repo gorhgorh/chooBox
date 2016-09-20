@@ -18,9 +18,9 @@ module.exports = {
   },
   reducers: {
     /* synchronous operations that modify state. Triggered by actions. Signature of (data, state). */
-    update: (data, state) => ({ title: 'curTick' }),
+    update: (data, state) => ({ title: 'curTick ' + state.curTick }),
     nextTick: (data, state) => {
-      debug(state)
+
       const newState = extend(state)
       if (state.curTick === 15 ) {
         newState.curTick = 0
@@ -29,8 +29,11 @@ module.exports = {
         newState.curTick = newState.curTick + 1
         debug('newState', newState)
       }
+      debug(newState.curTick % 4)
+      if (newState.curTick % 4 === 0 ) {
+        debug(newState)
 
-      console.log(newState)
+      }
       return newState
     },
   },

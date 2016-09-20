@@ -1,3 +1,10 @@
+body{
+  background-color: #eee;
+}
+*{
+  box-sizing: border-box;
+}
+
 .flex-container {
   padding: 0;
   margin: 0;
@@ -9,7 +16,7 @@
   display: -webkit-flex;
   display: flex;
 
-  -webkit-flex-flow: row wrap;
+  flex-flow:nowrap;
   justify-content: space-around;
 }
 
@@ -26,4 +33,13 @@
 .stepBt{
   width: 20px;
   height: 20px;
+  display: inline-block;
+  line-height: 21px;
+  text-align: center;
+  font-weight: 400;
+  font-size: 0.66rem;
+  color:#fff;
+  background-color: #222;
 }
+
+.current{border: 1px solid red;}
