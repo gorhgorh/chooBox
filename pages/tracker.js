@@ -1,26 +1,28 @@
 /* Page: tracker */
 
-const html = require('choo/html')
+'use strict'
+const name = 'tracker'
+const debug = require('debug')('chooAudio:' + name)
+const html = require('bel')
 const songInfo = require('../elements/song-info')
+
 const track = require('../elements/track')
-const metronaume = require('../chooAudio/metronaume')
-const bpmToMs = metronaume.bpmToMs
+const controls = require('../elements/controls')
+
 function tracker (state, prev, send) {
+
   return html`
-    <article class="cf" onload=${() => {
-      window.daBeat = setInterval(() => {
-        send('nextTick')
-      },bpmToMs(state.bpm))
-    }}>
+    <article class="cf">
+      ${controls(state)}
       <div class="fl w-100 w-70-ns tc tracker">
         <h1>Tracker</h1>
         <h3>${state.title}</h3>
           <div><button onclick=${(e) => send('update')}>My effect</button></div>
           <div><button onclick=${(e) => send('playTick')}>playTick</button></div>
           <div><button onclick=${(e) => send('nextTick')}>nextTick</button></div>
-          <div class='test'>${songInfo(state) }</div>
+          <div class='test'>${songInfo(state)}</div>
         <main>
-          ${track(state) }
+          ${track(state)}
         </main>
 
       </div>
