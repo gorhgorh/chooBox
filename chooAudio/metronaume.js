@@ -10,6 +10,9 @@ module .exports = {
     debug(thing)
     cb()
   },
+  bpmToMs:(bpm) => {
+    return 60000 / bpm
+  },
   playTick : (tick, cb) => {
     debug('playTickCalled')
     debug(tick)

@@ -14,17 +14,32 @@ module.exports = {
       true,false,false,false,
       true,false,false,false
     ],
+    bpm: 120,
     curTick: 0
   },
   reducers: {
     /* synchronous operations that modify state. Triggered by actions. Signature of (data, state). */
     update: (data, state) => ({ title: 'curTick ' + state.curTick }),
-    nextTick: (data, state) => {
+    start: (data, state) => {
+      const newState = extend(state)
+      state.timer
+      if (state.curTick === 15 ) {
+        newState.curTick = 0
+      }else {
+        newState.curTick = newState.curTick + 1
+        debug('newState', newState)
+      }
+      debug(newState.curTick % 4)
+      if (newState.curTick % 4 === 0 ) {
+        debug(newState)
 
+      }
+      return newState
+    },
+    nextTick: (data, state) => {
       const newState = extend(state)
       if (state.curTick === 15 ) {
         newState.curTick = 0
-
       }else {
         newState.curTick = newState.curTick + 1
         debug('newState', newState)
