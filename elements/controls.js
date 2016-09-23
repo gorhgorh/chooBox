@@ -16,7 +16,7 @@ function controls (state, prev, send) {
       <button onclick=${(e) => send('nextTick')}>nextTick</button>
       <button onclick=${(e) => send('prevTick')}>prevTick</button>
     </div>
-    <div class="bpm"><input type="text" oninput=${(e) => send('changeTempo', e.target.value)}></div>
+    <div class="bpm"><input type="text" oninput=${(e) => send('changeTempo', e.target.value)} value=${state.bpm}></div>
   </div>
   `
 }

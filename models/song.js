@@ -6,7 +6,7 @@ var extend = require('xtend')
 const playTick = metro.playTick
 const metronaume = require('../chooAudio/metronaume')
 const bpmToMs = metronaume.bpmToMs
-
+let clock
 
 module.exports = {
   state: {
@@ -25,22 +25,6 @@ module.exports = {
   reducers: {
     /* synchronous operations that modify state. Triggered by actions. Signature of (data, state). */
     update: (data, state) => ({ title: 'curTick ' + state.curTick }),
-
-    // start: (data, state) => {
-    //   const newState = extend(state)
-    //   state.timer
-    //   if (state.curTick === 15) {
-    //     newState.curTick = 0
-    //   } else {
-    //     newState.curTick = newState.curTick + 1
-    //     debug('newState', newState)
-    //   }
-    //   debug(newState.curTick % 4)
-    //   if (newState.curTick % 4 === 0) {
-    //     debug(newState)
-    //   }
-    //   return newState
-    // },
     nextTick: (data, state) => {
       const newState = extend(state)
       if (state.curTick === 15) {
@@ -53,6 +37,11 @@ module.exports = {
       if (newState.curTick % 4 === 0) {
         debug(newState)
       }
+      return newState
+    },
+    updateTempo: (data, state) => {
+      const newState = extend(state)
+      newState.bpm = data
       return newState
     },
     prevTick: (data, state) => {
@@ -80,20 +69,25 @@ module.exports = {
     },
     start: (data, state, send, done) => {
       debug('start called')
-      clearInterval(window.daBeat)
+      clearInterval(clock)
       // not sure if i need the initial step, may be problematic on tempo changes
       // send('nextTick', done)
-      window.daBeat = setInterval(() => {
+      clock = setInterval(() => {
         send('nextTick', done)
       }, bpmToMs(state.bpm))
     },
     stop: (data, state, send, done) => {
       debug('stop called')
-      clearInterval(window.daBeat)
+      clearInterval(clock)
     },
     changeTempo: (data, state, send, done) => {
-      debug('changeTempo called', data)
-      clearInterval(window.daBeat)
+      clearInterval(clock)
+      let tempo = parseInt(data, 10)
+      if (tempo > 400) tempo = 400
+      if (isNaN(tempo)) tempo = 120
+      debug('changeTempo called', parseInt(data, 10))
+      send('updateTempo', tempo, done)
+
       send('start', state, done)
     },
   },
