@@ -13,13 +13,10 @@ function tracker (state, prev, send) {
 
   return html`
     <article class="cf">
-      ${controls(state)}
+      <div>${controls(state, prev, send)}</div>
       <div class="fl w-100 w-70-ns tc tracker">
         <h1>Tracker</h1>
         <h3>${state.title}</h3>
-          <div><button onclick=${(e) => send('update')}>My effect</button></div>
-          <div><button onclick=${(e) => send('playTick')}>playTick</button></div>
-          <div><button onclick=${(e) => send('nextTick')}>nextTick</button></div>
           <div class='test'>${songInfo(state)}</div>
         <main>
           ${track(state)}

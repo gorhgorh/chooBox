@@ -26,30 +26,43 @@ module.exports = {
     /* synchronous operations that modify state. Triggered by actions. Signature of (data, state). */
     update: (data, state) => ({ title: 'curTick ' + state.curTick }),
 
-    start: (data, state) => {
-      const newState = extend(state)
-      state.timer
-      if (state.curTick === 15) {
-        newState.curTick = 0
-      } else {
-        newState.curTick = newState.curTick + 1
-        debug('newState', newState)
-      }
-      debug(newState.curTick % 4)
-      if (newState.curTick % 4 === 0) {
-        debug(newState)
-      }
-      return newState
-    },
+    // start: (data, state) => {
+    //   const newState = extend(state)
+    //   state.timer
+    //   if (state.curTick === 15) {
+    //     newState.curTick = 0
+    //   } else {
+    //     newState.curTick = newState.curTick + 1
+    //     debug('newState', newState)
+    //   }
+    //   debug(newState.curTick % 4)
+    //   if (newState.curTick % 4 === 0) {
+    //     debug(newState)
+    //   }
+    //   return newState
+    // },
     nextTick: (data, state) => {
       const newState = extend(state)
       if (state.curTick === 15) {
         newState.curTick = 0
       } else {
         newState.curTick = newState.curTick + 1
-        debug('newState', newState)
+
       }
-      debug(newState.curTick % 4)
+      // debug(newState.curTick % 4)
+      if (newState.curTick % 4 === 0) {
+        debug(newState)
+      }
+      return newState
+    },
+    prevTick: (data, state) => {
+      const newState = extend(state)
+      if (state.curTick === 0) {
+        newState.curTick = 15
+      } else {
+        newState.curTick = newState.curTick - 1
+      }
+      // debug(newState.curTick % 4)
       if (newState.curTick % 4 === 0) {
         debug(newState)
       }
@@ -66,10 +79,23 @@ module.exports = {
       })
     },
     start: (data, state, send, done) => {
+      debug('start called')
+      clearInterval(window.daBeat)
+      // not sure if i need the initial step, may be problematic on tempo changes
+      // send('nextTick', done)
       window.daBeat = setInterval(() => {
-        send('nextTick')
+        send('nextTick', done)
       }, bpmToMs(state.bpm))
-    }
+    },
+    stop: (data, state, send, done) => {
+      debug('stop called')
+      clearInterval(window.daBeat)
+    },
+    changeTempo: (data, state, send, done) => {
+      debug('changeTempo called', data)
+      clearInterval(window.daBeat)
+      send('start', state, done)
+    },
   },
   subscriptions: [
     // asynchronous read-only operations that don't modify state directly.
