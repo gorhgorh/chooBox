@@ -7,7 +7,7 @@ const html = require('bel')
 
 function controls (state, prev, send) {
   return html`
-  <div class="flex-container">
+  <div class="" onload=${() => send('start')}>
     <div class="controls">
       <button onclick=${(e) => send('update')}>My effect</button>
       <button onclick=${(e) => send('start')}>start</button>

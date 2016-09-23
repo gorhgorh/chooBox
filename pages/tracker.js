@@ -12,22 +12,22 @@ const controls = require('../elements/controls')
 function tracker (state, prev, send) {
 
   return html`
-    <article class="cf">
-      <div>${controls(state, prev, send)}</div>
-      <div class="fl w-100 w-70-ns tc tracker">
-        <h1>Tracker</h1>
+    <div class="cf">
+      <div class="fl tracker">
+        <h1>ChooAudio</h1>
+        <div>${controls(state, prev, send)}</div>
         <h3>${state.title}</h3>
           <div class='test'>${songInfo(state)}</div>
         <main>
-          ${track(state)}
+          ${track(state, prev, send)}
         </main>
 
       </div>
-      <div class="fl w-100 w-30-ns tc">
+      <div class="fl">
         <h1>Debug</h1>
         <div class="code">${JSON.stringify(state)}</div>
       </div>
-    </article>
+    </div>
   `
 }
 

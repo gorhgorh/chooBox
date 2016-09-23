@@ -35,8 +35,16 @@ module.exports = {
       }
       // debug(newState.curTick % 4)
       if (newState.curTick % 4 === 0) {
-        debug(newState)
+        // debug(newState)
       }
+      return newState
+    },
+    toggleStep: (step, state) => {
+      const newState = extend(state)
+      debug(step, 'clicked')
+
+      newState.pattern[step] = !newState.pattern[step]
+      // newState.bpm = data
       return newState
     },
     updateTempo: (data, state) => {
@@ -53,7 +61,7 @@ module.exports = {
       }
       // debug(newState.curTick % 4)
       if (newState.curTick % 4 === 0) {
-        debug(newState)
+        // debug(newState)
       }
       return newState
     }

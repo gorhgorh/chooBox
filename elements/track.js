@@ -14,12 +14,12 @@ function trackInfo (state, prev, send) {
       let curClass = ''
       const isCurStep = (state.curTick === i) ? true : ''
       if (isCurStep === true) curClass = 'current'
-      const checked = (step === true) ? 'bg-dark-green' : 'bg-light-green'
+      const checked = (step === true) ? 'stepOn' : 'stepOff'
       // const isCurrent = ()
       return html`
         <div class="flex-item">
-          <div class="stepBt ${checked} ${curClass}">
-            ${i}
+          <div class="stepBt ${checked} ${curClass}" onclick=${(e) => send('toggleStep', i)}>
+            ${i + 1}
           </div>
         </div>`
     }
