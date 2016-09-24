@@ -100,7 +100,6 @@ module.exports = {
 
       })
       send('nextTick', done)
-      debug('state:',state)
     },
     start: (data, state, send, done) => {
       debug('start called')

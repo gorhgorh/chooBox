@@ -7,6 +7,7 @@ const html = require('bel')
 const songInfo = require('../elements/song-info')
 
 const tracks = require('../elements/tracks')
+const beatBar = require('../elements/beatBar')
 const controls = require('../elements/controls')
 
 function tracker (state, prev, send) {
@@ -20,6 +21,7 @@ function tracker (state, prev, send) {
           <div class='test'>${songInfo(state)}</div>
         <main>
           ${tracks(state, prev, send)}
+          ${beatBar(state, prev, send)}
         </main>
 
       </div>

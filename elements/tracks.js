@@ -20,7 +20,7 @@ function tracks (state, prev, send) {
           return html`
           <div class="flex-item">
             <div class="stepBt ${checked} ${curClass}" onclick=${(e) => send('toggleStep', stepInfo)}>
-              ${sI + 1}
+
             </div>
           </div>`
         })}
