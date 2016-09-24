@@ -5,11 +5,6 @@ since the framework is really expressive and i can basically hack and patch it l
 
 Still I'm probably PILLING bad practice here, and I'm putting them here
 
-- the set interval on load for bpm ... ugly but work
-  - remove the global var (it can probably be stored in the state ?)
-  - give option to change bpm (clear relaunch)
-
-
 Choo-cli created a directory structure that [we've found to be optimal](https://github.com/yoshuawuyts/choo-handbook/blob/master/designing-for-reusability.md) for slim
 applications and reusability.
 

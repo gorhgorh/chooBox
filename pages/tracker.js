@@ -6,7 +6,7 @@ const debug = require('debug')('chooAudio:' + name)
 const html = require('bel')
 const songInfo = require('../elements/song-info')
 
-const track = require('../elements/track')
+const tracks = require('../elements/tracks')
 const controls = require('../elements/controls')
 
 function tracker (state, prev, send) {
@@ -19,7 +19,7 @@ function tracker (state, prev, send) {
         <h3>${state.title}</h3>
           <div class='test'>${songInfo(state)}</div>
         <main>
-          ${track(state, prev, send)}
+          ${tracks(state, prev, send)}
         </main>
 
       </div>

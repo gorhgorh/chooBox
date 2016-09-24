@@ -5,7 +5,7 @@
 const html = require('bel')
 
 function trackInfo (state) {
-  return html`<div>${state.curTick + 1} / ${state.pattern.length}</div>`
+  return html`<div>${state.curTick + 1} / ${state.patterns[0].length}</div>`
 }
 
 module.exports = trackInfo

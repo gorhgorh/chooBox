@@ -4,7 +4,6 @@ const debug = require('debug')('chooAudio:' + name)
 const Sound = require('./sound')
 const _ = require('lodash')
 
-
 /**
  * play a frequency with a sinwave
  *
