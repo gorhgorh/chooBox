@@ -79,7 +79,9 @@ module.exports = {
     cb()
   },
   bpmToMs: (bpm) => {
-    return 60000 / bpm
+    const interval = 60000 / (bpm * 4) // 4/4 rulez ... for NOW
+    debug('bpm', bpm, 'interval', interval, 'signature : 4/4' )
+    return interval
   },
   playTick: (tick, cb) => {
     debug('playTick Called')
