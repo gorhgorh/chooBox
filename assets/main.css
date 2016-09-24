@@ -39,9 +39,9 @@ body{
   text-align: center;
   font-weight: 400;
   font-size: 0.66rem;
+  transition-duration: 0.2s;
 }
 
-.current{border: 1px solid red;}
 
 .stepOn{
   color:#fff;

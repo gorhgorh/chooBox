@@ -5,21 +5,25 @@ const name = 'beatBar'
 const debug = require('debug')('chooAudio:' + name)
 
 const html = require('bel')
+const sf = require('sheetify')
+
+const prefix = sf('../assets/css/beatBar.css')
+
 
 function beatBar (state, prev, send) {
-  const pattern= state.patterns[0]
-  return html`<div class="flex-container">
+  const pattern = state.patterns[0]
+  return html`<div class="flex-container ${prefix}">
     ${pattern.map((step, sI) => {
-        let curClass = ''
-        const isCurStep = (state.curTick === sI) ? true : ''
-        if (isCurStep === true) curClass = 'current'
-        return html`
+      let curClass = ''
+      const isCurStep = (state.curTick === sI) ? true : ''
+      if (isCurStep === true) curClass = 'current'
+      return html`
         <div class="flex-item">
           <div class="stepBt ${curClass}">
             ${sI + 1}
           </div>
         </div>`
-      })}
+    })}
     </div>
     `
 }

@@ -22,7 +22,7 @@ function Sound () {
   }
 
   sound.playSound = function (context, soundBuffer, offset) {
-    debug('playSound',soundBuffer)
+    debug('playSound', soundBuffer)
     return function () {
       offset ? offset : 0
       var soundObj = context.createBufferSource()

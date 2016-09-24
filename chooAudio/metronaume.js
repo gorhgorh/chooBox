@@ -59,7 +59,7 @@ var audio = sounds.ctx
 var soundArr = []
 var play = sounds.playSound
 var audio = sounds.ctx
-function soundCb(sounds) {
+function soundCb (sounds) {
   // debug('the sounds', play)
   _.each(sounds, function (soundBuffer) {
     soundArr.push(soundBuffer)
@@ -80,7 +80,7 @@ module.exports = {
   },
   bpmToMs: (bpm) => {
     const interval = 60000 / (bpm * 4) // 4/4 rulez ... for NOW
-    debug('bpm', bpm, 'interval', interval, 'signature : 4/4' )
+    debug('bpm', bpm, 'interval', interval, 'signature : 4/4')
     return interval
   },
   playTick: (tick, cb) => {

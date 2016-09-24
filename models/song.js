@@ -13,30 +13,30 @@ module.exports = {
     /* initial values of state inside the model */
     title: 'Da Init song',
     patterns:[
-    [
-      true, false, false, false,
-      false, false, false, false,
-      false, false, false, false,
-      false, false, false, false
-    ],
-    [
-      false, false, false, false,
-      true, false, false, false,
-      false, false, false, false,
-      false, false, false, false
-    ],
-    [
-      false, false, false, false,
-      false, false, false, false,
-      true, false, false, false,
-      false, false, false, false
-    ],
-    [
-      false, false, false, false,
-      false, false, false, false,
-      false, false, false, false,
-      true, false, false, false
-    ]
+      [
+        true, false, false, false,
+        false, false, false, false,
+        false, false, false, false,
+        false, false, false, false
+      ],
+      [
+        false, false, false, false,
+        true, false, false, false,
+        false, false, false, false,
+        false, false, false, false
+      ],
+      [
+        false, false, false, false,
+        false, false, false, false,
+        true, false, false, false,
+        false, false, false, false
+      ],
+      [
+        false, false, false, false,
+        false, false, false, false,
+        false, false, false, false,
+        true, false, false, false
+      ]
     ],
     bpm: 120,
     curTick: 0,
@@ -90,12 +90,12 @@ module.exports = {
     // asynchronous operations that don't modify state directly.
     // Triggered by actions, can call actions. Signature of (data, state, send, done)
     playTick: (data, state, send, done) => {
-      //debug('yarr started',state.patterns[state.curTick])
+      // debug('yarr started',state.patterns[state.curTick])
       let lastTick = state.curTick + 1
-      if (lastTick  === state.patterns[0].length) lastTick = 0
+      if (lastTick === state.patterns[0].length) lastTick = 0
       state.patterns.map((pattern, i) => {
         if (pattern[lastTick]) {
-          sounds.playSound(sounds.ctx,sounds.bufferLoader.bufferList[i])()
+          sounds.playSound(sounds.ctx, sounds.bufferLoader.bufferList[i])()
         }
 
       })
@@ -129,7 +129,7 @@ module.exports = {
       metronaume.init(state, done)
       // autoStart!
       // send('start', state, done)
-    },
+    }
   },
   subscriptions: [
     // asynchronous read-only operations that don't modify state directly.
