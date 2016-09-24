@@ -70,10 +70,12 @@ module.exports = {
     // asynchronous operations that don't modify state directly.
     // Triggered by actions, can call actions. Signature of (data, state, send, done)
     playTick: (data, state, send, done) => {
-      debug('yarr started')
-      playTick(state, (state) => {
-        return send('nextTick', state, done)
-      })
+      debug('yarr started',state.pattern[state.curTick])
+      if (state.pattern[state.curTick]) {
+        sounds.playSound(sounds.ctx,sounds.bufferLoader.bufferList[0])()
+      }
+      send('nextTick', done)
+      debug('state:',state)
     },
     start: (data, state, send, done) => {
       debug('start called')
@@ -81,7 +83,8 @@ module.exports = {
       // not sure if i need the initial step, may be problematic on tempo changes
       // send('nextTick', done)
       clock = setInterval(() => {
-        send('nextTick', done)
+        const sounds = metronaume.audio
+        send('playTick', done)
       }, bpmToMs(state.bpm))
     },
     stop: (data, state, send, done) => {
@@ -95,6 +98,11 @@ module.exports = {
       if (isNaN(tempo)) tempo = 120
       debug('changeTempo called', parseInt(data, 10))
       send('updateTempo', tempo, done)
+
+      send('start', state, done)
+    },
+    initAudio: (data, state, send, done) => {
+      metronaume.init(state, done)
 
       send('start', state, done)
     },
