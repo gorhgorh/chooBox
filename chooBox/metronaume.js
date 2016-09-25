@@ -42,7 +42,7 @@ function note (audio, frequency, duration) {
   }
 }
 
-var files = [
+const files = [
   '../assets/audio/modem1.mp3',
   '../assets/audio/modem2.mp3',
   '../assets/audio/modem3.mp3',
@@ -55,10 +55,10 @@ var files = [
 ]
 
 const sounds = Sound()
-var audio = sounds.ctx
-var soundArr = []
-var play = sounds.playSound
-var audio = sounds.ctx
+
+const soundArr = []
+const play = sounds.playSound
+const audio = sounds.ctx
 function soundCb (sounds) {
   // debug('the sounds', play)
   _.each(sounds, function (soundBuffer) {

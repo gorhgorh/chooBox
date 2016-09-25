@@ -8,31 +8,33 @@ function Sound () {
   var sound = {}
   sound.finishedLoading = function(bufferList, cb) {
     sound.inited = true
-    cb(bufferList)
   }
 
   sound.init = function (files, cb) {
     sound.ctx = new AudioContext()
+    debug('audioContext built')
     sound.bufferLoader = new BufferLoader(
       sound.ctx,
       files,
       finishedLoading
     )
+
     sound.playSound = function (soundBuffer, offset) {
-      debug('playSound', soundBuffer)
-      return function () {
-        offset ? offset : 0
-        var soundObj = sound.ctx.createBufferSource()
-        soundObj.buffer = soundBuffer
-        soundObj.connect(sound.ctx.destination)
-        soundObj.start(offset)
-      }
+      // debug('playSound', soundBuffer)
+      offset ? offset : 0
+      var soundObj = sound.ctx.createBufferSource()
+      soundObj.buffer = soundBuffer
+      soundObj.connect(sound.ctx.destination)
+      soundObj.start(offset)
     }
 
     sound.bufferLoader.load()
     function finishedLoading (bufferList) {
+      debug('soundsInited')
+      // debug(bufferList)
       sound.inited = true
-      cb(bufferList)
+      sound.soundBank = bufferList
+      // return bufferList
     }
   }
 

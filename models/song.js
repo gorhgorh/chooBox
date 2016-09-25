@@ -1,11 +1,10 @@
 'use strict'
 const name = 'song'
 const debug = require('debug')('chooBox:' + name)
-const metro = require('../chooBox/metronaume')
 var extend = require('xtend')
+const metro = require('../chooBox/metronaume')
 const playTick = metro.playTick
-const metronaume = require('../chooBox/metronaume')
-const bpmToMs = metronaume.bpmToMs
+const bpmToMs = metro.bpmToMs
 let clock
 
 module.exports = {
@@ -74,11 +73,14 @@ module.exports = {
     // Triggered by actions, can call actions. Signature of (data, state, send, done)
     playTick: (data, state, send, done) => {
       // debug('yarr started',state.patterns[state.curTick])
+      const bank = sounds.soundBank
+
       let lastTick = state.curTick
       if (lastTick === state.patterns[0].length) lastTick = 0
       state.patterns.map((pattern, i) => {
-        if (pattern[lastTick]) {
-          sounds.playSound(sounds.bufferLoader.bufferList[i])()
+        // if the current step is on
+        if (pattern[lastTick] === true) {
+          sounds.playSound(bank[i])
         }
       })
       ++lastTick
@@ -91,7 +93,7 @@ module.exports = {
       // not sure if i need the initial step, may be problematic on tempo changes
       // send('nextTick', done)
       clock = setInterval(() => {
-        const sounds = metronaume.audio
+        const sounds = metro.audio
         send('playTick', done)
       }, bpmToMs(state.bpm))
     },
@@ -111,7 +113,7 @@ module.exports = {
       send('start', state, done)
     },
     initAudio: (data, state, send, done) => {
-      metronaume.init(state, done)
+      metro.init(state, done)
       // autoStart!
       // send('start', state, done)
     }

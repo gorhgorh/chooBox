@@ -2,6 +2,7 @@
 'use strict'
 const name = 'sound'
 const debug = require('debug')('chooBox:' + name)
+
 function BufferLoader (context, urlList, callback) {
   this.context = context
   this.urlList = urlList
@@ -11,11 +12,11 @@ function BufferLoader (context, urlList, callback) {
 }
 
 BufferLoader.prototype.loadBuffer = function (url, index) {
-  var request = new XMLHttpRequest()
+  const request = new XMLHttpRequest()
   request.open('GET', url, true)
   request.responseType = 'arraybuffer'
 
-  var loader = this
+  const loader = this
 
   request.onload = function () {
     loader.context.decodeAudioData(
