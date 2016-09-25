@@ -10,7 +10,7 @@ const sf = require('sheetify')
 const prefix = sf('../assets/css/debuger.css')
 
 function makeDbgString (state) {
-  if(state.songDbg === true) return html`
+  if (state.songDbg === true) return html`
     <div class="code">${JSON.stringify(state).replace(/,"/g, ',\n"').replace(/, "/g, ',\n"')}</div>
   `
 }
@@ -32,10 +32,9 @@ function makeDbgBt (songDbg, send) {
 }
 
 function debuger (state, prev, send) {
-
   return html`
   <div class="${prefix}">
-    <h1>Debug ${/*makeDbgBt(state.songDbg, send)*/ ''}</h1>
+    <h1>Debug ${''}</h1>
     ${makeDbgString(state)}
   </div>
   `
