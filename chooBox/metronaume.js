@@ -1,6 +1,6 @@
 'use strict'
 const name = 'metronaume'
-const debug = require('debug')('chooAudio:' + name)
+const debug = require('debug')('chooBox:' + name)
 const Sound = require('./sound')
 const _ = require('lodash')
 
@@ -59,7 +59,7 @@ var audio = sounds.ctx
 var soundArr = []
 var play = sounds.playSound
 var audio = sounds.ctx
-function soundCb(sounds) {
+function soundCb (sounds) {
   // debug('the sounds', play)
   _.each(sounds, function (soundBuffer) {
     soundArr.push(soundBuffer)
@@ -79,7 +79,9 @@ module.exports = {
     cb()
   },
   bpmToMs: (bpm) => {
-    return 60000 / bpm
+    const interval = 60000 / (bpm * 4) // 4/4 rulez ... for NOW
+    debug('bpm', bpm, 'interval', interval, 'signature : 4/4')
+    return interval
   },
   playTick: (tick, cb) => {
     debug('playTick Called')

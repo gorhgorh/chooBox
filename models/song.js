@@ -1,43 +1,18 @@
 'use strict'
 const name = 'song'
-const debug = require('debug')('chooAudio:' + name)
-const metro = require('../chooAudio/metronaume')
+const debug = require('debug')('chooBox:' + name)
+const metro = require('../chooBox/metronaume')
 var extend = require('xtend')
 const playTick = metro.playTick
-const metronaume = require('../chooAudio/metronaume')
+const metronaume = require('../chooBox/metronaume')
 const bpmToMs = metronaume.bpmToMs
 let clock
 
 module.exports = {
   state: {
     /* initial values of state inside the model */
-    title: 'Da Init song',
-    patterns:[
-    [
-      true, false, false, false,
-      false, false, false, false,
-      false, false, false, false,
-      false, false, false, false
-    ],
-    [
-      false, false, false, false,
-      true, false, false, false,
-      false, false, false, false,
-      false, false, false, false
-    ],
-    [
-      false, false, false, false,
-      false, false, false, false,
-      true, false, false, false,
-      false, false, false, false
-    ],
-    [
-      false, false, false, false,
-      false, false, false, false,
-      false, false, false, false,
-      true, false, false, false
-    ]
-    ],
+    title: 'ModemLove',
+    patterns:[[true,true,false,false,false,false,false,false,false,false,false,false,false,false,false,false],[false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false],[false,false,true,false,false,false,false,false,true,false,false,false,false,false,false,false],[false,false,false,false,false,false,false,false,false,false,false,false,true,false,false,false]],
     bpm: 120,
     curTick: 0,
     metTimer: ''
@@ -90,17 +65,16 @@ module.exports = {
     // asynchronous operations that don't modify state directly.
     // Triggered by actions, can call actions. Signature of (data, state, send, done)
     playTick: (data, state, send, done) => {
-      //debug('yarr started',state.patterns[state.curTick])
+      // debug('yarr started',state.patterns[state.curTick])
       let lastTick = state.curTick + 1
-      if (lastTick  === state.patterns[0].length) lastTick = 0
+      if (lastTick === state.patterns[0].length) lastTick = 0
       state.patterns.map((pattern, i) => {
         if (pattern[lastTick]) {
-          sounds.playSound(sounds.ctx,sounds.bufferLoader.bufferList[i])()
+          sounds.playSound(sounds.ctx, sounds.bufferLoader.bufferList[i])()
         }
 
       })
       send('nextTick', done)
-      debug('state:',state)
     },
     start: (data, state, send, done) => {
       debug('start called')
@@ -130,7 +104,7 @@ module.exports = {
       metronaume.init(state, done)
       // autoStart!
       // send('start', state, done)
-    },
+    }
   },
   subscriptions: [
     // asynchronous read-only operations that don't modify state directly.

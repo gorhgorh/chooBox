@@ -1,7 +1,7 @@
 /* globals AudioContext */
 'use strict'
 const name = 'sound'
-const debug = require('debug')('chooAudio:' + name)
+const debug = require('debug')('chooBox:' + name)
 var BufferLoader = require('./BufferLoader')
 var soundArr = []
 function Sound () {
@@ -22,7 +22,7 @@ function Sound () {
   }
 
   sound.playSound = function (context, soundBuffer, offset) {
-    debug('playSound',soundBuffer)
+    debug('playSound', soundBuffer)
     return function () {
       offset ? offset : 0
       var soundObj = context.createBufferSource()

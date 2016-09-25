@@ -1,0 +1,15 @@
+.mainTitle{
+  font-size: 2rem;
+}
+
+.songTitle{
+  font-size: 1.5rem;
+}
+
+.sigStep, .sig{
+  min-width: 10px;
+  display: inline-block;
+}
+.sigStep{
+  text-align: right;
+}

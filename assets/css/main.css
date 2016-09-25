@@ -1,9 +1,13 @@
+html {
+  box-sizing: border-box;
+}
+*, *:before, *:after {
+  box-sizing: inherit;
+}
+
 body{
   background-color: #eee;
   font-family: 'Raleway', sans-serif;
-}
-*{
-  box-sizing: border-box;
 }
 
 .flex-container {
@@ -39,15 +43,9 @@ body{
   text-align: center;
   font-weight: 400;
   font-size: 0.66rem;
+  transition-duration: 0.2s;
 }
 
-.current{border: 1px solid red;}
 
-.stepOn{
-  color:#fff;
-  background-color: #222;
-}
-.stepOff{
-  color:#222;
-  background-color: #ccc;
-}
+
+

@@ -74,7 +74,7 @@ setInterval(function () {
   // Find all the tracks where the current step is on.  Play the
   // sounds for those tracks.
   data.tracks
-    .filter(function (track) { return track.steps[data.step]})
+    .filter(function (track) { return track.steps[data.step] })
     .forEach(function (track) { track.playSound() })
 }, 100)
 
