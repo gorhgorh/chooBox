@@ -74,13 +74,14 @@ module.exports = {
     // Triggered by actions, can call actions. Signature of (data, state, send, done)
     playTick: (data, state, send, done) => {
       // debug('yarr started',state.patterns[state.curTick])
-      let lastTick = state.curTick + 1
+      let lastTick = state.curTick
       if (lastTick === state.patterns[0].length) lastTick = 0
       state.patterns.map((pattern, i) => {
         if (pattern[lastTick]) {
-          sounds.playSound(sounds.ctx, sounds.bufferLoader.bufferList[i])()
+          sounds.playSound(sounds.bufferLoader.bufferList[i])()
         }
       })
+      ++lastTick
       send('nextTick', done)
     },
     start: (data, state, send, done) => {
