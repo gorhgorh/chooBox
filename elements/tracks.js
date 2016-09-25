@@ -1,6 +1,6 @@
 // Element: tracks
 //
-'use strict'
+// 'use strict'
 const name = 'tracks'
 const debug = require('debug')('chooBox:' + name)
 

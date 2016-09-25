@@ -1,6 +1,6 @@
 /* Page: tracker */
 
-'use strict'
+// 'use strict'
 const name = 'tracker'
 const debug = require('debug')('chooBox:' + name)
 const html = require('bel')

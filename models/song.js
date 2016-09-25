@@ -1,4 +1,4 @@
-'use strict'
+// 'use strict'
 const name = 'song'
 const debug = require('debug')('chooBox:' + name)
 var extend = require('xtend')
@@ -11,7 +11,17 @@ module.exports = {
   state: {
     /* initial values of state inside the model */
     title: 'ModemLove',
-    patterns: [[true, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false], [false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false], [false, false, false, false, false, false, false, false, true, false, false, false, false, false, true, false], [false, false, false, true, false, false, false, false, false, false, false, false, true, false, false, false]],
+    patterns: [
+        [true, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false],
+        [false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false],
+        [false, false, false, false, false, false, false, false, true, false, false, false, false, false, true, false],
+        [false, false, false, true, false, false, false, false, false, false, false, false, true, false, false, false],
+        [false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false],
+        [false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false],
+        [false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false],
+        [false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false],
+        [false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false],
+      ],
     bpm: 60,
     curTick: 0,
     isPlaying: false,

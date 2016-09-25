@@ -1,6 +1,6 @@
 // Element: debug
 //
-'use strict'
+// 'use strict'
 const name = 'debuger'
 const debug = require('debug')('chooBox:' + name)
 

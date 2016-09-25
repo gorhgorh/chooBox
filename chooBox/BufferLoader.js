@@ -1,5 +1,5 @@
 /* globals XMLHttpRequest */
-'use strict'
+// 'use strict'
 const name = 'sound'
 const debug = require('debug')('chooBox:' + name)
 

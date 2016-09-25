@@ -1,5 +1,5 @@
 /* globals AudioContext */
-'use strict'
+// 'use strict'
 const name = 'sound'
 const debug = require('debug')('chooBox:' + name)
 var BufferLoader = require('./BufferLoader')
@@ -20,7 +20,9 @@ function Sound () {
     )
 
     sound.playSound = function (soundBuffer, offset) {
-      // debug('playSound', soundBuffer)
+      const soundBuffers = sound.soundBank
+      const maxSound = soundBuffers.length
+      // debug('playSound',maxSound)
       offset ? offset : 0
       var soundObj = sound.ctx.createBufferSource()
       soundObj.buffer = soundBuffer

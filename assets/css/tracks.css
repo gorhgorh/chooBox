@@ -19,7 +19,7 @@
   border: 3px solid var(--colorNeutral);
 }
 .stepBt.current {
-  transform: scale(1.5);
+  transform: scale(0.5);
 }
 
 .c1 .stepOn{

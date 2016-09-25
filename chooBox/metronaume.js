@@ -1,4 +1,4 @@
-'use strict'
+// 'use strict'
 const name = 'metronaume'
 const debug = require('debug')('chooBox:' + name)
 const Sound = require('./sound')
@@ -60,7 +60,7 @@ const soundArr = []
 const play = sounds.playSound
 const audio = sounds.ctx
 function soundCb (sounds) {
-  // debug('the sounds', play)
+  debug('the sounds cb')
   _.each(sounds, function (soundBuffer) {
     soundArr.push(soundBuffer)
   })
@@ -74,7 +74,7 @@ module.exports = {
   soundArr,
   init: (thing, cb) => {
     sounds.init(files, soundCb)
-    debug('init')
+    debug('audio init')
     debug(thing)
     cb()
   },
@@ -82,10 +82,5 @@ module.exports = {
     const interval = 60000 / (bpm * 4) // 4/4 rulez ... for NOW
     debug('bpm', bpm, 'interval', interval, 'signature : 4/4')
     return interval
-  },
-  playTick: (tick, cb) => {
-    debug('playTick Called')
-    debug(tick)
-    cb(tick)
   }
 }

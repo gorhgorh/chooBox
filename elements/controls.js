@@ -1,5 +1,5 @@
 // Element: track
-'use strict'
+// 'use strict'
 const name = 'controlls'
 const debug = require('debug')('chooBox:' + name)
 
