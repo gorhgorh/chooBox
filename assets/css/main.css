@@ -6,10 +6,12 @@ html {
 }
 
 body{
-  background-color: #eee;
   font-family: 'Raleway', sans-serif;
 }
-
+.wrapper{
+  width: 80%;
+  margin: 0 auto;
+}
 .flex-container {
   padding: 0;
   margin: 0;
@@ -43,9 +45,11 @@ body{
   text-align: center;
   font-weight: 400;
   font-size: 0.66rem;
-  transition-duration: 0.2s;
+
 }
 
-
+main{
+  width: 500px;
+}
 
 

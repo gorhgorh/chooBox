@@ -23,6 +23,7 @@ since the framework is really expressive and i can basically hack and patch it l
 - [ ] Songs improvements
   - [ ] load / save songs to localStorage
   - [ ] import / export song as a string || json || ???
+
 # TO LEARN
 - [ ] subscriptions (key, midi, usb, ???)
 - [ ] production, export via browserify

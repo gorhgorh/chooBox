@@ -12,21 +12,23 @@ module.exports = {
   state: {
     /* initial values of state inside the model */
     title: 'ModemLove',
-    patterns:[[true,true,false,false,false,false,false,false,false,false,false,false,false,false,false,false],[false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false],[false,false,true,false,false,false,false,false,true,false,false,false,false,false,false,false],[false,false,false,false,false,false,false,false,false,false,false,false,true,false,false,false]],
+    patterns: [[true, true, false, false, false, false, false, false, false, false, false, false, false, false, false, false], [false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false], [false, false, true, false, false, false, false, false, true, false, false, false, false, false, false, false], [false, false, false, false, false, false, false, false, false, false, false, false, true, false, false, false]],
     bpm: 120,
     curTick: 0,
-    metTimer: ''
+    isPlaying: false,
+    version: '0.1.0',
+    songDbg: false
   },
   reducers: {
     /* synchronous operations that modify state. Triggered by actions. Signature of (data, state). */
     update: (data, state) => ({ title: 'curTick ' + state.curTick }),
+    updatePlay: (data, state) => ({ isPlaying: data }),
     nextTick: (data, state) => {
       const newState = extend(state)
       if (state.curTick === 15) {
         newState.curTick = 0
       } else {
         newState.curTick = newState.curTick + 1
-
       }
       // debug(newState.curTick % 4)
       if (newState.curTick % 4 === 0) {
@@ -72,13 +74,13 @@ module.exports = {
         if (pattern[lastTick]) {
           sounds.playSound(sounds.ctx, sounds.bufferLoader.bufferList[i])()
         }
-
       })
       send('nextTick', done)
     },
     start: (data, state, send, done) => {
       debug('start called')
       clearInterval(clock)
+      send('updatePlay', true, done)
       // not sure if i need the initial step, may be problematic on tempo changes
       // send('nextTick', done)
       clock = setInterval(() => {
@@ -88,6 +90,7 @@ module.exports = {
     },
     stop: (data, state, send, done) => {
       debug('stop called')
+      send('updatePlay', false, done)
       clearInterval(clock)
     },
     changeTempo: (data, state, send, done) => {

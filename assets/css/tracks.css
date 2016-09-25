@@ -1,42 +1,51 @@
 :root {
-  --color1: #63BF77;
-  --color2: #427F4F;
-  --color3: #83FF9E;
-  --color4: #76E58E;
-  --color5: #76E58E;
+  --color1: #0B3C78;
+  --color2: #0B3C78;
+  --color3: #026898;
+  --color4: #0F4364;
+  --color5: #416A74;
+  --colorNeutral: #9fa1a4;
 }
 
 .stepBt {
   text-align: center;
-  background-color: #fff;
-  color:#333;
+  background-color: var(--colorNeutral);
+  border-radius:50%;
+}
+.flex-item:nth-child(4n+1) .stepBt {
+  text-align: center;
+  background-color: transparent;
+  border: 3px solid var(--colorNeutral);
 }
 .stepBt.current {
-  text-align: center;
-  transform: scale(1.5);
-  /*border: 1px solid blue;*/
-  background-color: #333;
+  transform: scale(1.2);
 }
 
-
 .c1 .stepBt {
+    transition-duration: 0.2s;
+}
+.c1 .stepOn{
     background-color: var(--color1);
 }
 .c2 .stepBt {
   background-color: var(--color2);
+  transition-duration: 0.3s;
 }
 .c3 .stepBt {
   background-color: var(--color3);
+  transition-duration: 0.4s;
 }
 .c4 .stepBt {
   background-color: var(--color4);
+  transition-duration: 0.5s;
 }
 .c5 .stepBt {
   background-color: var(--color5);
+  transition-duration:  0.6s;
 }
 
 .stepOn{
   color:#fff;
-  background-color: #222!important;
+  background-color: #EBBA23!important;
 }
 
