@@ -12,32 +12,7 @@ module.exports = {
   state: {
     /* initial values of state inside the model */
     title: 'Da Init song',
-    patterns:[
-      [
-        true, false, false, false,
-        false, false, false, false,
-        false, false, false, false,
-        false, false, false, false
-      ],
-      [
-        false, false, false, false,
-        true, false, false, false,
-        false, false, false, false,
-        false, false, false, false
-      ],
-      [
-        false, false, false, false,
-        false, false, false, false,
-        true, false, false, false,
-        false, false, false, false
-      ],
-      [
-        false, false, false, false,
-        false, false, false, false,
-        false, false, false, false,
-        true, false, false, false
-      ]
-    ],
+    patterns:[[true,true,false,false,false,false,false,false,false,false,false,false,false,false,false,false],[false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false],[false,false,true,false,false,false,false,false,true,false,false,false,false,false,false,false],[false,false,false,false,false,false,false,false,false,false,false,false,true,false,false,false]],
     bpm: 120,
     curTick: 0,
     metTimer: ''

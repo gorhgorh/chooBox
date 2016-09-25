@@ -1,0 +1,34 @@
+:root {
+  --color1: #63BF77;
+  --color2: #427F4F;
+  --color3: #83FF9E;
+  --color4: #214028;
+  --color5: #76E58E;
+}
+
+.stepBt {
+  text-align: center;
+  background-color: #fff;
+  color:#333;
+}
+.current {
+  text-align: center;
+  transform: scale(1.5);
+  /*border: 1px solid blue;*/
+}
+
+.c1{
+  background-color: var(--color1);
+}
+.c2{
+  background-color: var(--color2);
+}
+.c3{
+  background-color: var(--color3);
+}
+.c4{
+  background-color: var(--color4);
+}
+.c5{
+  background-color: var(--color5);
+}
