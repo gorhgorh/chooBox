@@ -2,7 +2,7 @@
   --color1: #63BF77;
   --color2: #427F4F;
   --color3: #83FF9E;
-  --color4: #214028;
+  --color4: #76E58E;
   --color5: #76E58E;
 }
 
@@ -11,24 +11,32 @@
   background-color: #fff;
   color:#333;
 }
-.current {
+.stepBt.current {
   text-align: center;
   transform: scale(1.5);
   /*border: 1px solid blue;*/
+  background-color: #333;
 }
 
-.c1{
-  background-color: var(--color1);
+
+.c1 .stepBt {
+    background-color: var(--color1);
 }
-.c2{
+.c2 .stepBt {
   background-color: var(--color2);
 }
-.c3{
+.c3 .stepBt {
   background-color: var(--color3);
 }
-.c4{
+.c4 .stepBt {
   background-color: var(--color4);
 }
-.c5{
+.c5 .stepBt {
   background-color: var(--color5);
 }
+
+.stepOn{
+  color:#fff;
+  background-color: #222!important;
+}
+

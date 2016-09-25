@@ -1,7 +1,7 @@
 /* globals AudioContext */
 'use strict'
 const name = 'sound'
-const debug = require('debug')('chooAudio:' + name)
+const debug = require('debug')('chooBox:' + name)
 var BufferLoader = require('./BufferLoader')
 var soundArr = []
 function Sound () {

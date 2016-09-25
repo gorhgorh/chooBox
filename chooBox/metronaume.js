@@ -1,6 +1,6 @@
 'use strict'
 const name = 'metronaume'
-const debug = require('debug')('chooAudio:' + name)
+const debug = require('debug')('chooBox:' + name)
 const Sound = require('./sound')
 const _ = require('lodash')
 

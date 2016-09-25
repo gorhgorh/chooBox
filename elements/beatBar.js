@@ -2,7 +2,7 @@
 //
 'use strict'
 const name = 'beatBar'
-const debug = require('debug')('chooAudio:' + name)
+const debug = require('debug')('chooBox:' + name)
 
 const html = require('bel')
 const sf = require('sheetify')

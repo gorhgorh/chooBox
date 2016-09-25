@@ -1,17 +1,17 @@
 'use strict'
 const name = 'song'
-const debug = require('debug')('chooAudio:' + name)
-const metro = require('../chooAudio/metronaume')
+const debug = require('debug')('chooBox:' + name)
+const metro = require('../chooBox/metronaume')
 var extend = require('xtend')
 const playTick = metro.playTick
-const metronaume = require('../chooAudio/metronaume')
+const metronaume = require('../chooBox/metronaume')
 const bpmToMs = metronaume.bpmToMs
 let clock
 
 module.exports = {
   state: {
     /* initial values of state inside the model */
-    title: 'Da Init song',
+    title: 'ModemLove',
     patterns:[[true,true,false,false,false,false,false,false,false,false,false,false,false,false,false,false],[false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false],[false,false,true,false,false,false,false,false,true,false,false,false,false,false,false,false],[false,false,false,false,false,false,false,false,false,false,false,false,true,false,false,false]],
     bpm: 120,
     curTick: 0,
