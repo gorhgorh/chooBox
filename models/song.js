@@ -17,7 +17,7 @@ module.exports = {
     curTick: 0,
     isPlaying: false,
     version: '0.1.0',
-    songDbg: true
+    songDbg: false
   },
   reducers: {
     /* synchronous operations that modify state. Triggered by actions. Signature of (data, state). */

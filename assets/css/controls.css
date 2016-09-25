@@ -35,5 +35,13 @@ button:focus{
   justify-content: flex-start;
 }
 .bpmInput{
-
+  border:0 solid;
+  background-color:transparent;
+  font-family: "Open Sans";
+  font-weight: 700;
+  font-size: 1.2rem;
+  color:#c3b600;
+}
+input:focus{
+  outline: none;
 }

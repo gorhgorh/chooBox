@@ -9,7 +9,7 @@ const sf = require('sheetify')
 const prefix = sf('../assets/css/controls.css')
 
 function makePlayStopBt (isP, send) {
-  if (isP === true) {
+  if (isP=== true) {
     return html`<button class='stopBt' onclick=${(e) => send('stop')}></button>`
   } else {
     return html`<button class='startBt' onclick=${(e) => send('start')}></button>`
@@ -17,6 +17,7 @@ function makePlayStopBt (isP, send) {
 }
 
 function controls (state, prev, send) {
+
   return html`
   <div class="${prefix}" onload=${() => {
     send('initAudio')
@@ -29,7 +30,7 @@ function controls (state, prev, send) {
         <button class='nextBt' onclick=${(e) => send('playTick')}></button>
       </div>
       <div class="bpm flex-item">
-        bpm <input type="text" oninput=${(e) => send('changeTempo', e.target.value)} value=${state.bpm}>
+        bpm <input class='bpmInput' type="text" oninput=${(e) => send('changeTempo', e.target.value)} value=${state.bpm}>
       </div>
     </div>
   </div>

@@ -1,4 +1,7 @@
 /* globals XMLHttpRequest */
+'use strict'
+const name = 'sound'
+const debug = require('debug')('chooBox:' + name)
 function BufferLoader (context, urlList, callback) {
   this.context = context
   this.urlList = urlList

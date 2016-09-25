@@ -11,6 +11,7 @@ const prefix = sf('../assets/css/debuger.css')
 
 function makeDbgString (state) {
   if (state.songDbg === true) return html`
+    <h1>Debug</h1>
     <div class="code">${JSON.stringify(state).replace(/,"/g, ',\n"').replace(/, "/g, ',\n"')}</div>
   `
 }
@@ -34,7 +35,6 @@ function makeDbgBt (songDbg, send) {
 function debuger (state, prev, send) {
   return html`
   <div class="${prefix}">
-    <h1>Debug ${''}</h1>
     ${makeDbgString(state)}
   </div>
   `
