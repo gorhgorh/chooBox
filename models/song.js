@@ -17,7 +17,7 @@ module.exports = {
     curTick: 0,
     isPlaying: false,
     version: '0.1.0',
-    songDbg: false
+    songDbg: true
   },
   reducers: {
     /* synchronous operations that modify state. Triggered by actions. Signature of (data, state). */
@@ -42,6 +42,12 @@ module.exports = {
 
       newState.patterns[step[0]][step[1]] = !newState.patterns[step[0]][step[1]]
       // newState.bpm = data
+      return newState
+    },
+    toggleDbg: (data, state) => {
+      const newState = extend(state)
+      newState.songDbg = data
+      debug('toggleDbg')
       return newState
     },
     updateTempo: (data, state) => {

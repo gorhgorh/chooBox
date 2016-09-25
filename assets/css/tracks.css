@@ -1,8 +1,8 @@
 :root {
-  --color1: #0B3C78;
-  --color2: #0B3C78;
-  --color3: #026898;
-  --color4: #0F4364;
+  --color1: #f6905d;
+  --color2: #deb408;
+  --color3: #9ed8d2;
+  --color4: #005581;
   --color5: #416A74;
   --colorNeutral: #9fa1a4;
 }
@@ -11,6 +11,7 @@
   text-align: center;
   background-color: var(--colorNeutral);
   border-radius:50%;
+  transition-duration: 0.3s;
 }
 .flex-item:nth-child(4n+1) .stepBt {
   text-align: center;
@@ -18,29 +19,23 @@
   border: 3px solid var(--colorNeutral);
 }
 .stepBt.current {
-  transform: scale(1.2);
+  transform: scale(1.5);
 }
 
-.c1 .stepBt {
-    transition-duration: 0.2s;
-}
 .c1 .stepOn{
-    background-color: var(--color1);
+    background-color: var(--color1)!important;
 }
-.c2 .stepBt {
-  background-color: var(--color2);
-  transition-duration: 0.3s;
+.c2 .stepOn {
+  background-color: var(--color2)!important;
 }
-.c3 .stepBt {
-  background-color: var(--color3);
-  transition-duration: 0.4s;
+.c3 .stepOn {
+  background-color: var(--color3)!important;
 }
-.c4 .stepBt {
-  background-color: var(--color4);
-  transition-duration: 0.5s;
+.c4 .stepOn {
+  background-color: var(--color4)!important;
 }
-.c5 .stepBt {
-  background-color: var(--color5);
+.c5 .stepOn {
+  background-color: var(--color5)!important;
   transition-duration:  0.6s;
 }
 
