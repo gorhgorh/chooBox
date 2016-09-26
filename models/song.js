@@ -24,7 +24,7 @@ module.exports = {
     bpm: 60,
     curTick: 0,
     isPlaying: false,
-    version: '0.1.0',
+    version: '0.2.0',
     songDbg: false
   },
   reducers: {
