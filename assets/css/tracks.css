@@ -19,12 +19,21 @@
   border: 3px solid var(--colorNeutral);
 }
 .stepBt.current {
-  transform: scale(0.5);
+  transform: scale(0.8);
+  border-width: 4px!important;
 }
 
 .c1 .stepOn{
     background-color: var(--color1)!important;
     border-color: var(--color1)!important;
+}
+.c1 .flex-item:nth-child(4n+1) .stepBt,
+.c2 .flex-item:nth-child(4n+1) .stepBt,
+.c3 .flex-item:nth-child(4n+1) .stepBt,
+.c4 .flex-item:nth-child(4n+1) .stepBt,
+.c5 .flex-item:nth-child(4n+1) .stepBt {
+
+  background-color: transparent !important;
 }
 .c2 .stepOn {
   background-color: var(--color2)!important;
