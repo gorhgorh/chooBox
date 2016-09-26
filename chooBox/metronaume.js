@@ -64,7 +64,8 @@ function soundCb (sounds) {
   _.each(sounds, function (soundBuffer) {
     soundArr.push(soundBuffer)
   })
-
+  debug('soundArr')
+  debug(soundArr)
   // play(audio, soundArr[0])()
 }
 window.sounds = sounds
@@ -73,9 +74,9 @@ module.exports = {
   audio: sounds,
   soundArr,
   init: (thing, cb) => {
+    debug('audio init starts')
     sounds.init(files, soundCb)
-    debug('audio init')
-    debug(thing)
+    // debug(thing)
     cb()
   },
   bpmToMs: (bpm) => {

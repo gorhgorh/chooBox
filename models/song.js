@@ -3,7 +3,6 @@ const name = 'song'
 const debug = require('debug')('chooBox:' + name)
 var extend = require('xtend')
 const metro = require('../chooBox/metronaume')
-const playTick = metro.playTick
 const bpmToMs = metro.bpmToMs
 let clock
 
@@ -83,14 +82,12 @@ module.exports = {
     // Triggered by actions, can call actions. Signature of (data, state, send, done)
     playTick: (data, state, send, done) => {
       // debug('yarr started',state.patterns[state.curTick])
-      const bank = sounds.soundBank
-
       let lastTick = state.curTick
       if (lastTick === state.patterns[0].length) lastTick = 0
       state.patterns.map((pattern, i) => {
         // if the current step is on
         if (pattern[lastTick] === true) {
-          sounds.playSound(bank[i])
+          sounds.playSound(parseInt(i, 10))
         }
       })
       ++lastTick

@@ -19,10 +19,19 @@ function Sound () {
       finishedLoading
     )
 
-    sound.playSound = function (soundBuffer, offset) {
+    sound.playSound = function (soundIndex, offset) {
       const soundBuffers = sound.soundBank
       const maxSound = soundBuffers.length
-      // debug('playSound',maxSound)
+      if (maxSound === 0) {
+        debug('no Sound', soundBuffers)
+        return false
+      }
+      if (soundIndex > maxSound) {
+        debug('sound buffer out of buffer array range')
+        soundIndex = maxSound
+      }
+      const soundBuffer = soundBuffers[soundIndex]
+      debug('playSound',soundBuffers)
       offset ? offset : 0
       var soundObj = sound.ctx.createBufferSource()
       soundObj.buffer = soundBuffer
@@ -39,7 +48,6 @@ function Sound () {
       // return bufferList
     }
   }
-
 
   return sound
 }
