@@ -32,7 +32,6 @@
 .c3 .flex-item:nth-child(4n+1) .stepBt,
 .c4 .flex-item:nth-child(4n+1) .stepBt,
 .c5 .flex-item:nth-child(4n+1) .stepBt {
-
   background-color: transparent !important;
 }
 .c2 .stepOn {
