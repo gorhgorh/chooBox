@@ -1,7 +1,7 @@
 {
   "name": "choo-audio",
-  "version": "0.0.0",
-  "description": "Created with choo-cli",
+  "version": "0.2.0",
+  "description": "ShoeBox is a simple drumkit based on choo framework",
   "license": "MIT",
   "scripts": {
     "build:prod": "scripts/build-prod.sh",

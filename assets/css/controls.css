@@ -1,5 +1,51 @@
+:root {
+  --baseIconS: 24px;
+}
+
 button{
   font-size: 1.5rem;
   background: transparent;
   border:0 solid;
+}
+button:focus{
+  outline: none
+}
+.startBt, .stopBt, .nextBt{
+  width: var(--baseIconS);
+  height: var(--baseIconS);
+  margin-right: 1rem;
+  margin-top: 10px;
+}
+.startBt{
+  background: url('../assets/icons/controls/play.svg');
+  background-size: var(--baseIconS) var(--baseIconS);
+
+}
+.stopBt{
+  background: url('../assets/icons/controls/stop.svg');
+  background-size: var(--baseIconS) var(--baseIconS);
+
+}
+.nextBt{
+  background: url('../assets/icons/controls/next.svg');
+  background-size: var(--baseIconS) var(--baseIconS);
+}
+
+.controls {
+  min-height: 70px;
+  justify-content: flex-start;
+}
+.bpm{
+  margin-top: 5px;
+}
+.bpmInput{
+  border:0 solid;
+  background-color:transparent;
+  font-family: "Open Sans";
+  font-weight: 700;
+  font-size: 1.2rem;
+  color:#c3b600;
+}
+input:focus{
+  outline: none;
 }

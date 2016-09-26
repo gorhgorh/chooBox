@@ -1,6 +1,6 @@
 // Element: beatBar
 //
-'use strict'
+// 'use strict'
 const name = 'beatBar'
 const debug = require('debug')('chooBox:' + name)
 

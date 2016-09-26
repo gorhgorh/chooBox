@@ -1,32 +1,42 @@
-'use strict'
+// 'use strict'
 const name = 'song'
 const debug = require('debug')('chooBox:' + name)
-const metro = require('../chooBox/metronaume')
 var extend = require('xtend')
-const playTick = metro.playTick
-const metronaume = require('../chooBox/metronaume')
-const bpmToMs = metronaume.bpmToMs
+const metro = require('../chooBox/metronaume')
+const bpmToMs = metro.bpmToMs
 let clock
 
 module.exports = {
   state: {
     /* initial values of state inside the model */
     title: 'ModemLove',
-    patterns:[[true,true,false,false,false,false,false,false,false,false,false,false,false,false,false,false],[false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false],[false,false,true,false,false,false,false,false,true,false,false,false,false,false,false,false],[false,false,false,false,false,false,false,false,false,false,false,false,true,false,false,false]],
-    bpm: 120,
+    patterns: [
+        [true, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false],
+        [false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false],
+        [false, false, false, false, false, false, false, false, true, false, false, false, false, false, true, false],
+        [false, false, false, true, false, false, false, false, false, false, false, false, true, false, false, false],
+        [false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false],
+        [false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false],
+        [false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false],
+        [false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false],
+        [false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false],
+      ],
+    bpm: 60,
     curTick: 0,
-    metTimer: ''
+    isPlaying: false,
+    version: '0.2.0',
+    songDbg: false
   },
   reducers: {
     /* synchronous operations that modify state. Triggered by actions. Signature of (data, state). */
     update: (data, state) => ({ title: 'curTick ' + state.curTick }),
+    updatePlay: (data, state) => ({ isPlaying: data }),
     nextTick: (data, state) => {
       const newState = extend(state)
       if (state.curTick === 15) {
         newState.curTick = 0
       } else {
         newState.curTick = newState.curTick + 1
-
       }
       // debug(newState.curTick % 4)
       if (newState.curTick % 4 === 0) {
@@ -40,6 +50,12 @@ module.exports = {
 
       newState.patterns[step[0]][step[1]] = !newState.patterns[step[0]][step[1]]
       // newState.bpm = data
+      return newState
+    },
+    toggleDbg: (data, state) => {
+      const newState = extend(state)
+      newState.songDbg = data
+      debug('toggleDbg')
       return newState
     },
     updateTempo: (data, state) => {
@@ -66,28 +82,31 @@ module.exports = {
     // Triggered by actions, can call actions. Signature of (data, state, send, done)
     playTick: (data, state, send, done) => {
       // debug('yarr started',state.patterns[state.curTick])
-      let lastTick = state.curTick + 1
+      let lastTick = state.curTick
       if (lastTick === state.patterns[0].length) lastTick = 0
       state.patterns.map((pattern, i) => {
-        if (pattern[lastTick]) {
-          sounds.playSound(sounds.ctx, sounds.bufferLoader.bufferList[i])()
+        // if the current step is on
+        if (pattern[lastTick] === true) {
+          sounds.playSound(parseInt(i, 10))
         }
-
       })
+      ++lastTick
       send('nextTick', done)
     },
     start: (data, state, send, done) => {
       debug('start called')
       clearInterval(clock)
+      send('updatePlay', true, done)
       // not sure if i need the initial step, may be problematic on tempo changes
       // send('nextTick', done)
       clock = setInterval(() => {
-        const sounds = metronaume.audio
+        const sounds = metro.audio
         send('playTick', done)
       }, bpmToMs(state.bpm))
     },
     stop: (data, state, send, done) => {
       debug('stop called')
+      send('updatePlay', false, done)
       clearInterval(clock)
     },
     changeTempo: (data, state, send, done) => {
@@ -101,7 +120,7 @@ module.exports = {
       send('start', state, done)
     },
     initAudio: (data, state, send, done) => {
-      metronaume.init(state, done)
+      metro.init(state, done)
       // autoStart!
       // send('start', state, done)
     }

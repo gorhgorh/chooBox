@@ -8,10 +8,9 @@ const sf = require('sheetify')
 const prefix = sf('../assets/css/songInfo.css')
 
 function trackInfo (state) {
-
   return html`
   <div class='songInfos ${prefix}'>
-    <div>
+    <div class='songTitleCont'>
       <span class="mainTitle">chooBox:</span><span class="songTitle">${state.title}</span>
     </div>
     <div>

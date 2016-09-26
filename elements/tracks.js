@@ -1,6 +1,6 @@
 // Element: tracks
 //
-'use strict'
+// 'use strict'
 const name = 'tracks'
 const debug = require('debug')('chooBox:' + name)
 
@@ -23,7 +23,6 @@ function tracks (state, prev, send) {
 
       return html`<div class='flex-container  ${colCode}'>
         ${track.map((step, sI) => {
-
           let curClass = ''
           const isCurStep = (state.curTick === sI) ? true : ''
           if (isCurStep === true) curClass = 'current'

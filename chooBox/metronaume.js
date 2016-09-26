@@ -1,4 +1,4 @@
-'use strict'
+// 'use strict'
 const name = 'metronaume'
 const debug = require('debug')('chooBox:' + name)
 const Sound = require('./sound')
@@ -42,7 +42,7 @@ function note (audio, frequency, duration) {
   }
 }
 
-var files = [
+const files = [
   '../assets/audio/modem1.mp3',
   '../assets/audio/modem2.mp3',
   '../assets/audio/modem3.mp3',
@@ -55,16 +55,17 @@ var files = [
 ]
 
 const sounds = Sound()
-var audio = sounds.ctx
-var soundArr = []
-var play = sounds.playSound
-var audio = sounds.ctx
+
+const soundArr = []
+const play = sounds.playSound
+const audio = sounds.ctx
 function soundCb (sounds) {
-  // debug('the sounds', play)
+  debug('the sounds cb')
   _.each(sounds, function (soundBuffer) {
     soundArr.push(soundBuffer)
   })
-
+  debug('soundArr')
+  debug(soundArr)
   // play(audio, soundArr[0])()
 }
 window.sounds = sounds
@@ -73,19 +74,14 @@ module.exports = {
   audio: sounds,
   soundArr,
   init: (thing, cb) => {
+    debug('audio init starts')
     sounds.init(files, soundCb)
-    debug('init')
-    debug(thing)
+    // debug(thing)
     cb()
   },
   bpmToMs: (bpm) => {
     const interval = 60000 / (bpm * 4) // 4/4 rulez ... for NOW
     debug('bpm', bpm, 'interval', interval, 'signature : 4/4')
     return interval
-  },
-  playTick: (tick, cb) => {
-    debug('playTick Called')
-    debug(tick)
-    cb(tick)
   }
 }

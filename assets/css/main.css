@@ -6,10 +6,14 @@ html {
 }
 
 body{
-  background-color: #eee;
-  font-family: 'Raleway', sans-serif;
+  font-family: 'Patua One', sans-serif;
+  width: 80%;
+  color: #9fa1a4;
+  margin: 20px auto 0;
 }
+/*.wrapper{
 
+}*/
 .flex-container {
   padding: 0;
   margin: 0;
@@ -26,26 +30,26 @@ body{
 }
 
 .flex-item {
-  /*width: 6.25%;*/
-  height: 20px;
-  margin-top: 10px;
-  color: white;
+  height: 36px;
+  /* margin-top: 10px; */
   font-weight: bold;
   font-size: 1em;
   text-align: center;
 }
 
 .stepBt{
-  width: 20px;
-  height: 20px;
+  width: 16px;
+  height: 16px;
   display: inline-block;
   line-height: 21px;
   text-align: center;
   font-weight: 400;
   font-size: 0.66rem;
-  transition-duration: 0.2s;
+
 }
 
-
+main{
+  width: 600px;
+}
 
 
