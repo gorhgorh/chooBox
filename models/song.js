@@ -11,16 +11,16 @@ module.exports = {
     /* initial values of state inside the model */
     title: 'ModemLove',
     patterns: [
-        [true, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false],
-        [false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false],
-        [false, false, false, false, false, false, false, false, true, false, false, false, false, false, true, false],
-        [false, false, false, true, false, false, false, false, false, false, false, false, true, false, false, false],
-        [false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false],
-        [false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false],
-        [false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false],
-        [false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false],
-        [false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false],
-      ],
+      [true, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false],
+      [false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false],
+      [false, false, false, false, false, false, false, false, true, false, false, false, false, false, true, false],
+      [false, false, false, true, false, false, false, false, false, false, false, false, true, false, false, false],
+      [false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false],
+      [false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false],
+      [false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false],
+      [false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false],
+      [false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false],
+    ],
     bpm: 60,
     curTick: 0,
     isPlaying: false,
@@ -87,7 +87,7 @@ module.exports = {
       state.patterns.map((pattern, i) => {
         // if the current step is on
         if (pattern[lastTick] === true) {
-          sounds.playSound(parseInt(i, 10))
+          metro.audio.playSound(parseInt(i, 10))
         }
       })
       ++lastTick
@@ -100,7 +100,6 @@ module.exports = {
       // not sure if i need the initial step, may be problematic on tempo changes
       // send('nextTick', done)
       clock = setInterval(() => {
-        const sounds = metro.audio
         send('playTick', done)
       }, bpmToMs(state.bpm))
     },
@@ -126,17 +125,11 @@ module.exports = {
     }
   },
   subscriptions: [
-    // asynchronous read-only operations that don't modify state directly.
-    // Can call actions. Signature of (send, done).
-    /*
-    (send, done) => {
-      // do stuff
+    function (send) {
+      debug('keylog subscription initialiased')
+      window.addEventListener('keypress', function (event) {
+        console.log(event)
+      })
     }
-    */
-    // function onclick (send) {
-    //   document.addEventListener('click', function () {
-    //     send('game:click')
-    //   })
-    // }
   ]
 }
