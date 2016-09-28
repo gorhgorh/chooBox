@@ -10,22 +10,59 @@ module.exports = {
   state: {
     /* initial values of state inside the model */
     title: 'ModemLove',
-    patterns: [
-      [true, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false],
-      [false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false],
-      [false, false, false, false, false, false, false, false, true, false, false, false, false, false, true, false],
-      [false, false, false, true, false, false, false, false, false, false, false, false, true, false, false, false],
-      [false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false],
-      [false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false],
-      [false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false],
-      [false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false],
-      [false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false],
+    patterns:[
+      {
+        steps:[true, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false],
+        type:'sample',
+        bufferIndex:0
+      },
+      {
+        steps:[false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false],
+        type:'sample',
+        bufferIndex:1
+      },
+      {
+        steps:[false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false],
+        type:'sample',
+        bufferIndex:2
+      },
+      {
+        steps:[false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false],
+        type:'sample',
+        bufferIndex:3
+      },
+      {
+        steps:[true, false, false, false, false, false, false, false, true, false, false, false, false, false, false, false],
+        type:'sample',
+        bufferIndex:4
+      },
+      {
+        steps:[false, false, true, false, false, false, true, false, false, false, true, false, false, false, true, false],
+        type:'sample',
+        bufferIndex:5
+      },
+      {
+        steps:[false, false, false, false, true, false, false, false, false, false, false, false, true, false, false, false],
+        type:'sample',
+        bufferIndex:6
+      },
+      {
+        steps:[false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false],
+        type:'sample',
+        bufferIndex:7
+      },
+      {
+        steps:[false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false],
+        type:'sample',
+        bufferIndex:8
+      }
     ],
     bpm: 60,
     curTick: 0,
     isPlaying: false,
     version: '0.2.0',
-    songDbg: false
+    songDbg: false,
+    sampleNames: metro.fileNames
   },
   reducers: {
     /* synchronous operations that modify state. Triggered by actions. Signature of (data, state). */
@@ -48,7 +85,8 @@ module.exports = {
       const newState = extend(state)
       debug(step, 'clicked')
 
-      newState.patterns[step[0]][step[1]] = !newState.patterns[step[0]][step[1]]
+      newState.patterns[step[0]].steps[step[1]] = !newState.patterns[step[0]].steps[step[1]]
+      debug('clicked',  newState.patterns[step[0]].steps[step[1]] )
       // newState.bpm = data
       return newState
     },
@@ -75,19 +113,31 @@ module.exports = {
         // debug(newState)
       }
       return newState
+    },
+    changeSample: (data, state) => {
+      const newState = extend(state)
+      newState.patterns[data.track].bufferIndex = data.sample
+      return newState
     }
   },
   effects: {
+    keyPressed: (data, state) => console.log('keypressed', data),
+    changeSample: (data, state) => {
+      console.log('changeSample', data)
+
+      window.evento = data
+    },
     // asynchronous operations that don't modify state directly.
     // Triggered by actions, can call actions. Signature of (data, state, send, done)
     playTick: (data, state, send, done) => {
       // debug('yarr started',state.patterns[state.curTick])
       let lastTick = state.curTick
-      if (lastTick === state.patterns[0].length) lastTick = 0
+      if (lastTick === state.patterns[0].steps.length) lastTick = 0
       state.patterns.map((pattern, i) => {
         // if the current step is on
-        if (pattern[lastTick] === true) {
-          metro.audio.playSound(parseInt(i, 10))
+        debug(pattern)
+        if (pattern.steps[lastTick] === true) {
+          metro.audio.playSound(parseInt(pattern.bufferIndex, 10))
         }
       })
       ++lastTick
@@ -125,10 +175,12 @@ module.exports = {
     }
   },
   subscriptions: [
-    function (send) {
-      debug('keylog subscription initialiased')
-      window.addEventListener('keypress', function (event) {
-        console.log(event)
+    (send, done) => {
+      window.addEventListener('keypress', function (e) {
+        const key = e.code
+        send('keyPressed', key, (err) => {
+          if (err) return done(err)
+        })
       })
     }
   ]

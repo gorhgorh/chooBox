@@ -1,4 +1,5 @@
 // 'use strict'
+
 const name = 'metronaume'
 const debug = require('debug')('chooBox:' + name)
 const Sound = require('./sound')
@@ -54,6 +55,12 @@ const files = [
   '../assets/audio/amen5.mp3'
 ]
 
+const fileNames = files.map(function(filePath){
+  const fileName = filePath.substr(filePath.lastIndexOf('/') + 1).slice(0, -4)
+  debug(fileName)
+  return fileName
+})
+
 const sounds = Sound()
 
 const soundArr = []
@@ -72,6 +79,7 @@ window.sounds = sounds
 
 module.exports = {
   audio: sounds,
+  fileNames,
   soundArr,
   init: (thing, cb) => {
     debug('audio init starts')

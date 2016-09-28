@@ -1,6 +1,6 @@
 /* globals XMLHttpRequest */
 // 'use strict'
-const name = 'sound'
+const name = 'bufferLoader'
 const debug = require('debug')('chooBox:' + name)
 
 function BufferLoader (context, urlList, callback) {

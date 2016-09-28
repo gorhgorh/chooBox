@@ -52,4 +52,46 @@ main{
   width: 600px;
 }
 
+/* select */
+.trackInfoCont {
+  width: 150px;
+}
 
+
+.trackInfoCont {
+	overflow: hidden;
+	border: 1px solid rgba(0, 0, 0, 0.1);
+	box-shadow: 0 0 0 1px rgba(255, 255, 255, 0.25);
+	padding-right: 10px;
+	position: relative;
+	z-index: 1;
+}
+.trackInfoCont:before {
+  content: '\25BC';
+  position: absolute;
+  font-size: 8px;
+  -webkit-transform: scaleY(.7);
+  -moz-transform: scaleY(.7);
+  -ms-transform: scaleY(.7);
+  -o-transform: scaleY(.7);
+  transform: scaleY(.7);
+  right: 0;
+  top: 50%;
+  margin-top: -4px;
+  background: transparent;
+  width: 30px;
+  text-align: center;
+  pointer-events: none;
+  z-index: 2;
+}
+.trackInfoCont select {
+  background: transparent;
+  border-radius: 0;
+  padding: 5px; /* If you add too much padding here, the options won't show in IE */
+  border: 0;
+  outline: none;
+  color: inherit;
+  height: 2.1em;
+  width: calc(100% + 50px);
+  max-width: none !important;
+}
