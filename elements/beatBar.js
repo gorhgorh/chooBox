@@ -11,7 +11,7 @@ const prefix = sf('../assets/css/beatBar.css')
 
 
 function beatBar (state, prev, send) {
-  const pattern = state.patterns[0]
+  const pattern = state.patterns[0].steps
   return html`<div class="flex-container ${prefix}">
     ${pattern.map((step, sI) => {
       let curClass = ''

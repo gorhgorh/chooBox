@@ -1,8 +1,16 @@
 /* globals XMLHttpRequest */
-// 'use strict'
-const name = 'sound'
-const debug = require('debug')('chooBox:' + name)
+'use strict'
+// const name = 'bufferLoader'
+// const debug = require('debug')('chooBox:' + name)
 
+
+/**
+ * load audio samples to an audio context
+ *
+ * @param {Object} context Audio context
+ * @param {Array} urlList array of samples to load
+ * @param {Function} callback function to run after loading sample
+ */
 function BufferLoader (context, urlList, callback) {
   this.context = context
   this.urlList = urlList

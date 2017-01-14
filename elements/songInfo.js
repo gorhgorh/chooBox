@@ -14,7 +14,7 @@ function trackInfo (state) {
       <span class="mainTitle">chooBox:</span><span class="songTitle">${state.title}</span>
     </div>
     <div>
-      Step: <span class="sigStep">${state.curTick + 1}</span>/<span class="sig">${state.patterns[0].length}</span>
+      Step: <span class="sigStep">${state.curTick + 1}</span>/<span class="sig">${state.patterns[0].steps.length}</span>
     </div>
   </div>`
 }
